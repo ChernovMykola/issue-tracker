@@ -16,3 +16,10 @@ class UserForm(forms.ModelForm):
         model = UserProfileInfo
         fields = ('username', 'email', 'confirm_password')
 
+class IssueForm(forms.ModelForm):
+    name = forms.CharField()
+    text = forms.Textarea()
+    class Meta():
+        model = Issue
+        fields = ('name', 'text')
+
