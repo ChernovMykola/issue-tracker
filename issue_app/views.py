@@ -2,11 +2,20 @@ from django.shortcuts import (
     render,
     redirect,
 )
+from django.urls import (
+    reverse_lazy
+)
 from .models import Issue
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    UserPassesTestMixin
+)
 from django.views.generic import (
     ListView,
     CreateView,
-    DetailView
+    DetailView,
+    DeleteView,
+
 )
 from .forms import IssueForm
 
@@ -30,5 +39,9 @@ class IssueCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class DeleteIssueView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Issue
+    success_url = reverse_lazy('issuetemp:post_myissue')
 
 
