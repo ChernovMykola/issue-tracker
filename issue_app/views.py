@@ -42,6 +42,6 @@ class IssueCreateView(CreateView):
 
 class DeleteIssueView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Issue
-    success_url = reverse_lazy('issuetemp:post_myissue')
+    success_url = reverse_lazy('issuetemp:myissue')
 
 
