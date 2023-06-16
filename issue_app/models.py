@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 
 
 class Issue(models.Model):
+    ISSUE_LABEL_CHOICES = (('WR', 'Work'), ('HM', 'Home'), ('SP', 'Special'))
+
     name = models.CharField(max_length=200)
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now)
+    labels = models.CharField(choices=ISSUE_LABEL_CHOICES, max_length=2)
     approve = models.BooleanField(default=False)
     approved_day = models.DateTimeField()
 
