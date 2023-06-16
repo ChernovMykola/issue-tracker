@@ -10,7 +10,18 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/issue.css' %}">
     </head>
     <body>
-    {% block content %}
-    {% endblock  %}
+        <nav class="navbar navbar-default custom-navbar">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a href="">All Issue</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">My Issue</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        {% block content %}
+        {% endblock  %}
     </body>
 </html>
