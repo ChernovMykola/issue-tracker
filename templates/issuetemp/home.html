@@ -1,4 +1,17 @@
 {% extends "issuetemp/base.html" %}
 {% block content %}
 
+<div class="">
+    {% if user.is_authenticated %}
+        {% for issue in issue %}
+                <div class="">
+                    <h1>{{ issue.title }}</h1>
+                    <div class="">
+                        <p> Published on: {{ issue.create_date|date:"D M Y" }}</p>
+                    </div>
+                    <b><p>{{issue.text}}</p></b>
+                </div>
+        {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}
