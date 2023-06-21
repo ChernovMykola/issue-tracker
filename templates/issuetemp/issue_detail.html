@@ -1,4 +1,17 @@
 {% extends "issuetemp/base.html" %}
 {% block content %}
+<h1 class="posttitle"> {{ post.title }}</h1>
+<p class="">{issue.text}}</p>
+<div class="dare postdate">
+    {{ post.published_date }}
+</div>
+{% if user.is_authenticated %}
+    <a class="" href="">
+        <span class="glyphicon glyphicon-pencil">Edit</span>
+    </a>
+    <a class="" href="">
+        <span class="glyphicon glyphicon-remove">Remove</span>
+    </a>
+{% endif %}
 
 {% endblock %}
