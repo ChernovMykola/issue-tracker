@@ -6,10 +6,12 @@
         {% for issue in issue %}
                 <div class="">
                     <h1>{{ issue.title }}</h1>
-                    <div class="">
-                        <p> Published on: {{ issue.create_date|date:"D M Y" }}</p>
-                    </div>
                     <b><p>{{issue.text}}</p></b>
+                    {% if issue.approved_day %}
+                        <div class="">
+                            {{ issue.approved_day }}
+                        </div>
+                    {% endif %}
                 </div>
         {% endfor %}
     {% endif %}

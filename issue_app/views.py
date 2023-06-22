@@ -44,4 +44,18 @@ class DeleteIssueView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Issue
     success_url = reverse_lazy('issuetemp:myissue')
 
+class MyIssue(ListView):
+    model = Issue
+    paginate_by = 5
+    template_name = 'issuetemp/myissue.html'
+    context_object_name = 'myissue'
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            issue = Issue.objects.filter(author=self.request.user)
+        else:
+            issue = Issue.objects.none()
+        return issue
+
+
 

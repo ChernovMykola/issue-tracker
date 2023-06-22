@@ -8,6 +8,7 @@ class Issue(models.Model):
 
     name = models.CharField(max_length=200)
     text = models.TextField()
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     create_date = models.DateTimeField(default=timezone.now)
     labels = models.CharField(choices=ISSUE_LABEL_CHOICES, max_length=2)
     approve = models.BooleanField(default=False)
